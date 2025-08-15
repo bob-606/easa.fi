@@ -27,7 +27,7 @@ const kimchi = {
 // Obstacles
 const obstacles = [];
 const obstacleWidth = 100;
-const obstacleGap = 314;
+const obstacleGap = 888;
 
 function drawKimchi() {
   ctx.fillStyle = '#ff6347'; // Kimchi jar color
@@ -121,3 +121,4 @@ document.addEventListener('keydown', (e) => {
 
 // Start the game
 gameLoop();
+
