@@ -292,6 +292,12 @@
             this.classList.add('glow');
             quote.classList.remove('shake');
 
+            if (player && player.isMuted()) {
+                player.unMute();
+                player.setVolume(40);
+                soundBtn.textContent = '🔊 Mute';
+            }
+
             if (quote.textContent.includes('FLY')) {
                 quote.textContent = '"YOU SHALL NOT PASS"';
                 quote.style.animation = 'none';
