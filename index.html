@@ -151,6 +151,25 @@
             animation: fadeIn 1s ease 2.5s forwards;
         }
 
+        .sound-toggle {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: var(--color-text-secondary);
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+
+        .sound-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
         .particle {
             position: fixed;
             bottom: -10px;
@@ -199,10 +218,9 @@
     </style>
 </head>
 <body>
-    <div class="video-bg">
-        <iframe src="https://www.youtube.com/embed/Sagg08DrO5U?autoplay=1&mute=1&loop=1&playlist=Sagg08DrO5U&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+    <div class="video-bg" id="video-bg"></div>
     <div class="video-overlay"></div>
+    <button class="sound-toggle" id="soundToggle">🔇 Unmute</button>
 
     <div class="particle"></div>
     <div class="particle"></div>
@@ -232,6 +250,43 @@
     <script>
         const img = document.querySelector('.gandalf-img');
         const quote = document.getElementById('quote');
+        const soundBtn = document.getElementById('soundToggle');
+        let player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('video-bg', {
+                videoId: 'Sagg08DrO5U',
+                playerVars: {
+                    autoplay: 1,
+                    mute: 1,
+                    loop: 1,
+                    playlist: 'Sagg08DrO5U',
+                    controls: 0,
+                    showinfo: 0,
+                    rel: 0,
+                    iv_load_policy: 3,
+                    modestbranding: 1,
+                    playsinline: 1,
+                },
+                events: {
+                    onReady: function (e) {
+                        e.target.playVideo();
+                    },
+                },
+            });
+        }
+
+        soundBtn.addEventListener('click', function () {
+            if (!player) return;
+            if (player.isMuted()) {
+                player.unMute();
+                player.setVolume(40);
+                this.textContent = '🔊 Mute';
+            } else {
+                player.mute();
+                this.textContent = '🔇 Unmute';
+            }
+        });
 
         img.addEventListener('click', function () {
             this.classList.add('glow');
@@ -256,5 +311,6 @@
             }
         });
     </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
