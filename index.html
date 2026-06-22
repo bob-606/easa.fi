@@ -26,6 +26,38 @@
             overflow: hidden;
         }
 
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .video-bg iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.78vh;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(5, 8, 12, 0.65);
+            z-index: 1;
+        }
+
         main {
             display: flex;
             align-items: center;
@@ -33,13 +65,12 @@
             min-height: 100vh;
             padding: 2rem;
             position: relative;
+            z-index: 3;
         }
 
         .hero {
             text-align: center;
             max-width: 500px;
-            position: relative;
-            z-index: 1;
         }
 
         .gandalf-img {
@@ -131,7 +162,7 @@
             opacity: 0;
             animation: rise linear infinite;
             pointer-events: none;
-            z-index: 0;
+            z-index: 2;
         }
 
         .particle:nth-child(1) { left: 10%; width: 3px; height: 3px; animation-duration: 6s; animation-delay: 0s; }
@@ -169,6 +200,11 @@
     </style>
 </head>
 <body>
+    <div class="video-bg">
+        <iframe src="https://www.youtube.com/embed/Sagg08DrO5U?autoplay=1&mute=1&loop=1&playlist=Sagg08DrO5U&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-overlay"></div>
+
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
