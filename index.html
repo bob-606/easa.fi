@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trustworthy; Airworthy</title>
+    <title>fly, you fools</title>
     <style>
         :root {
             --color-bg-primary: #0f1419;
             --color-text-primary: #ffffff;
             --color-text-secondary: #a0aec0;
-            --color-accent: #4299e1;
+            --color-accent: #e8c547;
         }
 
         * {
@@ -35,38 +35,36 @@
 
         .hero {
             text-align: center;
-            max-width: 600px;
+            max-width: 500px;
         }
 
-        .intro {
-            font-size: 1.1rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 2rem;
+        .gandalf-img {
+            max-width: 240px;
+            height: auto;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
         }
 
-        .motto-display {
+        .quote {
             font-family: 'Courier New', monospace;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            letter-spacing: 2px;
             color: var(--color-accent);
-            margin: 2rem 0;
-            line-height: 1.4;
+            letter-spacing: 3px;
+            margin: 1rem 0 0.5rem;
         }
 
-        .closing {
-            font-size: 0.95rem;
+        .attribution {
+            font-size: 0.9rem;
             color: var(--color-text-secondary);
-            margin-top: 2rem;
         }
 
         @media (max-width: 768px) {
-            .motto-display {
-                font-size: 1.8rem;
+            .gandalf-img {
+                max-width: 160px;
             }
-
-            .intro {
-                font-size: 1rem;
+            .quote {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -74,17 +72,9 @@
 <body>
     <main>
         <section class="hero">
-            <p class="intro">
-                Building a career in GA; <br>  One principle at a time.
-            </p>
-            
-            <div class="motto-display">
-                trustworthy;<br>airworthy;
-            </div>
-
-            <p class="closing">
-                Code that guides every decision.
-            </p>
+            <img class="gandalf-img" src="gandalf.png" alt="Gandalf the Grey">
+            <div class="quote">"FLY, YOU FOOLS"</div>
+            <div class="attribution">— Gandalf the Grey</div>
         </section>
     </main>
 </body>
