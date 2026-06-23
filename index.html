@@ -135,7 +135,32 @@
             }
             .quote {
                 font-size: 1.3rem;
-                min-height: 1.8rem;
+            }
+        }
+
+        @media (max-height: 500px) {
+            .gif-wrapper {
+                margin-bottom: 0.5rem;
+            }
+            .gif-wrapper img {
+                max-height: 55vh;
+                width: auto;
+            }
+            .quote {
+                font-size: 1rem;
+                margin: 0.3rem 0;
+            }
+            .attribution {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-height: 400px) {
+            .gif-wrapper img {
+                max-height: 40vh;
+            }
+            .quote {
+                font-size: 0.85rem;
             }
         }
     </style>
