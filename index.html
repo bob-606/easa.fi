@@ -26,71 +26,33 @@
             overflow: hidden;
         }
 
-        .video-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .video-bg iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 56.25vw;
-            min-height: 100vh;
-            min-width: 177.78vh;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        .video-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(5, 8, 12, 0.65);
-            z-index: 1;
-        }
-
         main {
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             padding: 2rem;
-            position: relative;
-            z-index: 3;
         }
 
         .hero {
             text-align: center;
-            max-width: 500px;
+            max-width: 600px;
         }
 
-        .gandalf-img {
-            max-width: 240px;
+        .gif-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(232, 197, 71, 0.15);
+        }
+
+        .gif-wrapper img {
+            display: block;
+            max-width: 100%;
             height: auto;
-            opacity: 0.85;
-            margin-bottom: 1.5rem;
-            cursor: pointer;
-            transition: filter 0.4s, opacity 0.4s, transform 0.3s;
-            border-radius: 8px;
-        }
-
-        .gandalf-img:hover {
-            opacity: 1;
-            transform: scale(1.02);
-        }
-
-        .gandalf-img.glow {
-            filter: drop-shadow(0 0 30px rgba(232, 197, 71, 0.6)) drop-shadow(0 0 60px rgba(232, 197, 71, 0.3));
-            opacity: 1;
+            border-radius: 12px;
         }
 
         .quote {
@@ -111,10 +73,6 @@
             border-right-color: transparent;
         }
 
-        .quote.shake {
-            animation: shake 0.5s ease-in-out;
-        }
-
         @keyframes typing {
             from { width: 0; }
             to { width: 16ch; }
@@ -122,14 +80,6 @@
 
         @keyframes blink {
             50% { border-color: transparent; }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-8px); }
-            40% { transform: translateX(8px); }
-            60% { transform: translateX(-5px); }
-            80% { transform: translateX(5px); }
         }
 
         .attribution {
@@ -143,33 +93,6 @@
             to { opacity: 1; }
         }
 
-        .click-hint {
-            font-size: 0.75rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 1rem;
-            opacity: 0.4;
-            animation: fadeIn 1s ease 2.5s forwards;
-        }
-
-        .sound-toggle {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--color-text-secondary);
-            padding: 0.5rem 0.8rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            z-index: 10;
-            transition: background 0.2s;
-        }
-
-        .sound-toggle:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
         .particle {
             position: fixed;
             bottom: -10px;
@@ -180,7 +103,7 @@
             opacity: 0;
             animation: rise linear infinite;
             pointer-events: none;
-            z-index: 2;
+            z-index: 0;
         }
 
         .particle:nth-child(1) { left: 10%; width: 3px; height: 3px; animation-duration: 6s; animation-delay: 0s; }
@@ -192,23 +115,23 @@
         .particle:nth-child(7) { left: 70%; width: 2px; height: 2px; animation-duration: 5.5s; animation-delay: 0.2s; }
         .particle:nth-child(8) { left: 80%; width: 4px; height: 4px; animation-duration: 7.5s; animation-delay: 1.2s; }
         .particle:nth-child(9) { left: 90%; width: 3px; height: 3px; animation-duration: 8.5s; animation-delay: 0.7s; }
-        .particle:nth-child(10) { left: 95%; width: 5px; height: 5px; animation-duration: 6s; animation-delay: 0.9s; }
-        .particle:nth-child(11) { left: 15%; width: 2px; height: 2px; animation-duration: 7s; animation-delay: 0.4s; }
-        .particle:nth-child(12) { left: 45%; width: 3px; height: 3px; animation-duration: 5.5s; animation-delay: 1.8s; }
-        .particle:nth-child(13) { left: 55%; width: 4px; height: 4px; animation-duration: 8s; animation-delay: 0.1s; }
-        .particle:nth-child(14) { left: 75%; width: 2px; height: 2px; animation-duration: 6.5s; animation-delay: 1.6s; }
-        .particle:nth-child(15) { left: 85%; width: 5px; height: 5px; animation-duration: 9s; animation-delay: 0.6s; }
+        .particle:nth-child(10) { left: 15%; width: 5px; height: 5px; animation-duration: 6s; animation-delay: 0.9s; }
+        .particle:nth-child(11) { left: 45%; width: 2px; height: 2px; animation-duration: 7s; animation-delay: 0.4s; }
+        .particle:nth-child(12) { left: 55%; width: 3px; height: 3px; animation-duration: 5.5s; animation-delay: 1.8s; }
+        .particle:nth-child(13) { left: 75%; width: 4px; height: 4px; animation-duration: 8s; animation-delay: 0.1s; }
+        .particle:nth-child(14) { left: 85%; width: 2px; height: 2px; animation-duration: 6.5s; animation-delay: 1.6s; }
+        .particle:nth-child(15) { left: 95%; width: 5px; height: 5px; animation-duration: 9s; animation-delay: 0.6s; }
 
         @keyframes rise {
             0% { transform: translateY(0) scale(1); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
             100% { transform: translateY(-100vh) scale(0.3); opacity: 0; }
         }
 
         @media (max-width: 768px) {
-            .gandalf-img {
-                max-width: 160px;
+            .gif-wrapper img {
+                max-width: 90vw;
             }
             .quote {
                 font-size: 1.3rem;
@@ -218,10 +141,6 @@
     </style>
 </head>
 <body>
-    <div class="video-bg" id="video-bg"></div>
-    <div class="video-overlay"></div>
-    <button class="sound-toggle" id="soundToggle">🔇 Unmute</button>
-
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
@@ -240,83 +159,12 @@
 
     <main>
         <section class="hero">
-            <img class="gandalf-img" src="gandalf.png" alt="Gandalf the Grey">
-            <div class="click-hint">⚡ click Gandalf's staff</div>
-            <div class="quote" id="quote">"FLY, YOU FOOLS"</div>
+            <div class="gif-wrapper">
+                <img src="gandalf.gif" alt="Gandalf">
+            </div>
+            <div class="quote">"FLY, YOU FOOLS"</div>
             <div class="attribution">— Gandalf the Grey</div>
         </section>
     </main>
-
-    <script>
-        const img = document.querySelector('.gandalf-img');
-        const quote = document.getElementById('quote');
-        const soundBtn = document.getElementById('soundToggle');
-        let player;
-
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('video-bg', {
-                videoId: 'Sagg08DrO5U',
-                playerVars: {
-                    autoplay: 1,
-                    mute: 1,
-                    loop: 1,
-                    playlist: 'Sagg08DrO5U',
-                    controls: 0,
-                    showinfo: 0,
-                    rel: 0,
-                    iv_load_policy: 3,
-                    modestbranding: 1,
-                    playsinline: 1,
-                },
-                events: {
-                    onReady: function (e) {
-                        e.target.playVideo();
-                    },
-                },
-            });
-        }
-
-        soundBtn.addEventListener('click', function () {
-            if (!player) return;
-            if (player.isMuted()) {
-                player.unMute();
-                player.setVolume(40);
-                this.textContent = '🔊 Mute';
-            } else {
-                player.mute();
-                this.textContent = '🔇 Unmute';
-            }
-        });
-
-        img.addEventListener('click', function () {
-            this.classList.add('glow');
-            quote.classList.remove('shake');
-
-            if (player && player.isMuted()) {
-                player.unMute();
-                player.setVolume(40);
-                soundBtn.textContent = '🔊 Mute';
-            }
-
-            if (quote.textContent.includes('FLY')) {
-                quote.textContent = '"YOU SHALL NOT PASS"';
-                quote.style.animation = 'none';
-                void quote.offsetHeight;
-                quote.style.animation = 'shake 0.5s ease-in-out';
-                quote.classList.add('done');
-
-                setTimeout(() => {
-                    quote.textContent = '"FLY, YOU FOOLS"';
-                    quote.style.animation = 'none';
-                    void quote.offsetHeight;
-                    quote.style.animation = 'shake 0.5s ease-in-out';
-                    setTimeout(() => {
-                        this.classList.remove('glow');
-                    }, 500);
-                }, 2000);
-            }
-        });
-    </script>
-    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
