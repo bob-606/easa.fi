@@ -89,6 +89,25 @@
             animation: fadeIn 1s ease 1.8s forwards;
         }
 
+        .sound-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--color-text-secondary);
+            padding: 0.4rem 0.7rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+
+        .sound-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
         @keyframes fadeIn {
             to { opacity: 1; }
         }
@@ -157,6 +176,9 @@
     <div class="particle"></div>
     <div class="particle"></div>
 
+    <audio id="bgm" src="epicsaxguy.mp3" loop preload="auto"></audio>
+    <button class="sound-btn" id="soundBtn">🔇 Sound off</button>
+
     <main>
         <section class="hero">
             <div class="gif-wrapper">
@@ -166,5 +188,22 @@
             <div class="attribution">— Gandalf the Grey</div>
         </section>
     </main>
+    <script>
+        const audio = document.getElementById('bgm');
+        const btn = document.getElementById('soundBtn');
+        let playing = false;
+
+        btn.addEventListener('click', function () {
+            if (playing) {
+                audio.pause();
+                this.textContent = '🔇 Sound off';
+            } else {
+                audio.play().then(() => {
+                    this.textContent = '🔊 Sound on';
+                }).catch(() => {});
+            }
+            playing = !playing;
+        });
+    </script>
 </body>
 </html>
